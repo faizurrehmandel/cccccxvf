@@ -1,0 +1,247 @@
+/* Variables */
+:root {
+    --primary-color: #2d3436;
+    --secondary-color: #636e72;
+    --accent-color: #00b894;
+    --text-color: #dfe6e9;
+    --background-color: #1e272e;
+    --sidebar-width: 300px;
+    --chat-header-height: 60px;
+    --chat-input-height: 100px;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Layout */
+.app-container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: var(--primary-color);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+}
+
+.sidebar-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-item {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.project-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.project-item.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-header {
+    height: var(--chat-header-height);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.message {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.message.user {
+    background-color: var(--accent-color);
+    margin-left: auto;
+}
+
+.message.ai {
+    background-color: var(--primary-color);
+    margin-right: auto;
+}
+
+.chat-input-container {
+    height: var(--chat-input-height);
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-form {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Form Elements */
+textarea {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    resize: none;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #00a884;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-send {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .chat-container {
+        width: 100%;
+    }
+}
