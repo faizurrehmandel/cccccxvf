@@ -1,0 +1,19 @@
+{
+  "name": "ai-development-studio",
+  "version": "1.0.0",
+  "description": "A chat-based AI development environment",
+  "main": "script.js",
+  "scripts": {
+    "start": "python main.py",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "development",
+    "chat",
+    "web-app"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}
